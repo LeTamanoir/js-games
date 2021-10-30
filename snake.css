@@ -1,0 +1,46 @@
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f3eee2;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#snake-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  min-height: 100vh;
+  width: 100%;
+}
+
+#snake {
+  border: solid 0.2rem #ccb27b;
+  border-radius: 0.2rem;
+}
+
+#replay {
+  background-color: #faa;
+  padding: 0.4rem 1rem;
+  font-size: 2rem;
+  border: #f00 solid 0.2rem;
+  color: #f00;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  z-index: 1;
+  margin-top: -30vmin;
+  display: none;
+}
+
+#replay.show {
+  display: block;
+}
+
+#score {
+  margin: 0 0 1.5rem;
+  font-size: 1.2rem;
+}

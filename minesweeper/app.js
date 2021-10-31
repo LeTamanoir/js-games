@@ -57,9 +57,9 @@ const Game = {
 
     let ctx = Game.ref.getContext("2d");
 
-    ctx.fillStyle = "#eae0c8";
-    ctx.fillRect(0, 0, Game.size, Game.size);
-    ctx.fillStyle = "#ccb27b";
+    // ctx.fillStyle = "#eae0c8";
+    // ctx.fillRect(0, 0, Game.size, Game.size);
+    ctx.fillStyle = "#000";
     ctx.textAlign = "center";
     ctx.font = "4rem Arial";
     ctx.fillText("🎉 You Won 🎉", Game.size / 2, Game.size / 2, Game.size);
@@ -71,9 +71,7 @@ const Game = {
   gameOver: () => {
     let ctx = Game.ref.getContext("2d");
 
-    ctx.fillStyle = "#eae0c8";
-    ctx.fillRect(0, 0, Game.size, Game.size);
-    ctx.fillStyle = "#ccb27b";
+    ctx.fillStyle = "#000";
     ctx.textAlign = "center";
     ctx.font = "4rem Arial";
     ctx.fillText("Game Over", Game.size / 2, Game.size / 2, Game.size);
@@ -149,9 +147,6 @@ const Bombs = {
     let ctx = Game.ref.getContext("2d");
     let n = Math.floor(winSize / 40) - 1;
 
-    if (Bombs.positions[y][x] == "b") return Game.gameOver();
-    else Bombs.checkedPos[y][x] = 1;
-
     ctx.fillStyle = "#eae0c8";
     ctx.fillRect(x * 40, y * 40, 40, 40);
 
@@ -162,6 +157,9 @@ const Bombs = {
     let b = Bombs.positions[y][x];
     let c = b == "b" ? "💣" : b != 0 ? b : "";
     ctx.fillText(c, x * 40 + 20, y * 40 + 28, 40);
+
+    if (Bombs.positions[y][x] == "b") return Game.gameOver();
+    else Bombs.checkedPos[y][x] = 1;
 
     if (Bombs.positions[y][x] == 0) {
       if (y - 1 >= 0)

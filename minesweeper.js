@@ -149,8 +149,7 @@ const Bombs = {
     let ctx = Game.ref.getContext("2d");
     let n = Math.floor(winSize / 40) - 1;
 
-    if (Bombs.positions[y][x] == "b") {
-    } //return Game.gameOver();
+    if (Bombs.positions[y][x] == "b") return Game.gameOver();
     else Bombs.checkedPos[y][x] = 1;
 
     ctx.fillStyle = "#eae0c8";
@@ -290,7 +289,7 @@ Game.replayRef.addEventListener("click", () => Game.reset());
 
 Game.rangeInputRef.addEventListener("input", (e) => {
   Game.rangeRef.innerText = e.target.value;
-  Bombs.number = e.target.value;
+  Bombs.number = parseInt(e.target.value);
   Game.reset();
 });
 

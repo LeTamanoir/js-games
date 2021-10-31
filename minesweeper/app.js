@@ -8,6 +8,7 @@ const Game = {
   rangeRef: document.querySelector("#number-mines>span>span"),
   rangeInputRef: document.querySelector("#number-mines-input"),
   helpRef: document.querySelector("#help"),
+  isOver: false,
 
   drawCanvas: () => {
     let ctx = Game.ref.getContext("2d");
@@ -32,6 +33,7 @@ const Game = {
   },
 
   handleRightClick: (x, y) => {
+    if (Game.isOver) return;
     let mouseX = Math.floor(x / 40);
     let mouseY = Math.floor(y / 40);
     Bombs.spot(mouseX, mouseY);
@@ -39,6 +41,7 @@ const Game = {
   },
 
   handleClick: (x, y) => {
+    if (Game.isOver) return;
     let mouseX = Math.floor(x / 40);
     let mouseY = Math.floor(y / 40);
     Bombs.show(mouseX, mouseY);
@@ -57,8 +60,7 @@ const Game = {
 
     let ctx = Game.ref.getContext("2d");
 
-    // ctx.fillStyle = "#eae0c8";
-    // ctx.fillRect(0, 0, Game.size, Game.size);
+    Game.isOver = true;
     ctx.fillStyle = "#000";
     ctx.textAlign = "center";
     ctx.font = "4rem Arial";
@@ -71,6 +73,8 @@ const Game = {
   gameOver: () => {
     let ctx = Game.ref.getContext("2d");
 
+    Game.isOver = true;
+
     ctx.fillStyle = "#000";
     ctx.textAlign = "center";
     ctx.font = "4rem Arial";
@@ -82,6 +86,7 @@ const Game = {
 
   reset: () => {
     Game.replayRef.classList.remove("show");
+    Game.isOver = false;
     Bombs.found = 0;
     Bombs.positions = [];
     Bombs.checkedPos = [];

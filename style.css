@@ -18,7 +18,8 @@ a {
   text-decoration: none;
 }
 
-#snake-container {
+#snake-container,
+#minesweeper-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,7 +63,7 @@ a {
 
 #game-list li {
   text-align: center;
-  margin: 1rem;
+  margin: 1.5rem 1rem;
 }
 
 #game-list li a {
@@ -83,7 +84,38 @@ a {
   margin: 1rem;
   padding: 0.4rem 0.6rem;
   background-color: #000;
+  border: none;
   color: #fff;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+#number-mines {
+  margin: 0 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+}
+
+#number-mines-input {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  background-color: #000;
+  border-radius: 0.1rem;
+  width: 200px;
+}
+
+#help {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  padding: 0.4rem 0.6rem;
+  background-color: #14365e;
+  color: #fff;
+  border: none;
   font-size: 1rem;
   border-radius: 0.3rem;
   cursor: pointer;

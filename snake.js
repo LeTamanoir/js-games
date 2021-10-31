@@ -66,11 +66,7 @@ const Game = {
     ) {
       return true;
     }
-    for (let i = 0; i < Snake.tail.length; i++) {
-      if (Snake.tail[i][0] == Snake.x && Snake.tail[i][1] == Snake.y) {
-        return true;
-      }
-    }
+    if (Snake.tail.find((e) => e[0] == Snake.x && e[1] == Snake.y)) return true;
     return false;
   },
 
@@ -172,14 +168,9 @@ const Apple = {
     let x = Math.floor((Math.random() * Game.size) / 40);
     let y = Math.floor((Math.random() * Game.size) / 40);
 
-    if (x == Snake.x && y == Snake.y) {
-      return Apple.respawn();
-    }
-    for (let i = 0; i < Snake.tail.length; i++) {
-      if (x == Snake.tail[i][0] && y == Snake.tail[i][1]) {
-        return Apple.respawn();
-      }
-    }
+    if (x == Snake.x && y == Snake.y) return Apple.respawn();
+    if (Snake.tail.find((e) => e[0] == x && e[1] == y)) return Apple.respawn();
+
     [Apple.x, Apple.y] = [x, y];
   },
 };
